@@ -17,11 +17,28 @@ This project uses the Symbiont trust stack for AI agent governance.
 - `get_agents_md` — Get the project's AGENTS.md content
 - `verify_schema` — Verify a tool schema with SchemaPin
 
+## Governance Tiers
+
+The plugin provides three progressive levels of protection:
+
+### Tier 1: Awareness (default)
+Advisory logging only. All tool calls proceed; state-modifying actions are logged to `.symbiont/audit/tool-usage.jsonl`. No blocking.
+
+### Tier 2: Protection (local deny list)
+Create `.symbiont/local-policy.toml` to block dangerous patterns. The `policy-guard.sh` hook blocks:
+- Built-in dangerous patterns (rm -rf /, force push, writes to .env/.ssh/.aws)
+- Developer-defined deny rules from the TOML config
+No `symbi` binary required.
+
+### Tier 3: Governance (Cedar evaluation)
+If `symbi` is on PATH and `policies/` exists, the hook also evaluates Cedar policies for formal authorization decisions.
+
 ## File Conventions
 - Agent definitions: `agents/*.dsl`
 - Cedar policies: `policies/*.cedar`
 - Symbiont config: `symbiont.toml`
 - Agent manifests: `AGENTS.md`
+- Local deny list: `.symbiont/local-policy.toml`
 
 ## Dual-Mode Operation
 

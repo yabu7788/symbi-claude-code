@@ -1,0 +1,22 @@
+# Symbiont Local Policy — Developer-defined deny rules
+# Copy to .symbiont/local-policy.toml to activate blocking protection.
+# Works with both symbi-claude-code and symbi-gemini-cli plugins.
+#
+# Three tiers:
+#   1. Awareness (default) — advisory logging only
+#   2. Protection (this file) — blocks matching patterns
+#   3. Governance (Cedar) — full policy evaluation via symbi binary
+
+[deny]
+# File paths to block writes to (substring match)
+paths = [".env", ".ssh/", ".aws/", ".gnupg/", "credentials"]
+
+# Shell commands to block (substring match)
+commands = ["rm -rf", "git push --force", "mkfs", "dd if="]
+
+# Git branches to block pushes to
+branches = ["main", "master", "production"]
+
+[require_approval]
+# Files that should trigger extra caution (logged, not blocked)
+paths = ["Dockerfile", "docker-compose.yml", "*.tf", "*.cedar"]

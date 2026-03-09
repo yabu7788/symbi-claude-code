@@ -70,14 +70,40 @@ claude --plugin-dir ./symbi-claude-code
 | `symbi-governor` | Governance-aware coding agent (default). Enforces policies and maintains audit trails. |
 | `symbi-dev` | DSL development specialist for writing agents and Cedar policies. |
 
-## Hooks
+## Governance Tiers
 
-The plugin installs hooks that run automatically:
+The plugin provides three progressive levels of protection:
 
-- **PreToolUse** (`policy-log.sh`): Advisory logging of state-modifying tool calls (does not block)
+### Tier 1: Awareness (default)
+
+All tool calls proceed. State-modifying actions are logged to `.symbiont/audit/tool-usage.jsonl` for post-hoc review.
+
+### Tier 2: Protection
+
+Create `.symbiont/local-policy.toml` to block dangerous patterns:
+
+```toml
+[deny]
+paths = [".env", ".ssh/", ".aws/"]
+commands = ["rm -rf", "git push --force"]
+branches = ["main", "master", "production"]
+```
+
+The `policy-guard.sh` hook blocks matching operations with exit code 2. Built-in patterns (destructive commands, force pushes, writes to sensitive files) are always blocked regardless of config.
+
+No `symbi` binary required. Works with both symbi-claude-code and symbi-gemini-cli.
+
+### Tier 3: Governance
+
+If `symbi` is on PATH and `policies/` exists, the hook evaluates Cedar policies for formal authorization decisions.
+
+### Hooks
+
+Hooks apply to `Write`, `Edit`, `Bash`, and all `mcp__*` tools:
+
+- **PreToolUse** (`policy-guard.sh`): Blocks dangerous operations (exit code 2)
+- **PreToolUse** (`policy-log.sh`): Advisory logging of state-modifying tool calls
 - **PostToolUse** (`audit-log.sh`): Logs tool usage to `.symbiont/audit/tool-usage.jsonl`
-
-Hooks apply to `Write`, `Edit`, `Bash`, and all `mcp__*` tools.
 
 ## MCP Tools
 
@@ -139,6 +165,7 @@ Project-level configuration lives in `symbiont.toml` (created by `/symbi-init`).
 | `symbiont.toml` | Symbiont runtime configuration |
 | `AGENTS.md` | Agent manifest |
 | `.symbiont/audit/` | Audit log output |
+| `.symbiont/local-policy.toml` | Local deny list for blocking protection |
 
 ## Examples
 

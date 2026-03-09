@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0] - 2026-03-08
+
+### Added
+- **Three-tier governance model**: Awareness (default), Protection (local deny list), Governance (Cedar)
+- `policy-guard.sh` blocking hook — blocks destructive commands, force pushes, writes to sensitive files
+- `.symbiont/local-policy.toml` deny list support — developer-configurable path, command, and branch blocking
+- Cedar policy evaluation in hooks when `symbi` is on PATH
+- `/symbi-init` now scaffolds `.symbiont/local-policy.toml` with safe defaults
+
+### Changed
+- Hooks now run `policy-guard.sh` (blocking) before `policy-log.sh` (advisory)
+- Updated CLAUDE.md and README.md to document governance tiers
+
 ## [0.2.0] - 2026-03-07
 
 ### Added

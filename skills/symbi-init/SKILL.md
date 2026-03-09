@@ -15,6 +15,7 @@ Set up a governed agent project in the current directory.
    ```
    agents/          # Agent DSL definitions
    policies/        # Cedar policy files
+   .symbiont/       # Local governance config and audit logs
    ```
 
 3. Create `symbiont.toml` with sensible defaults:
@@ -72,6 +73,14 @@ Set up a governed agent project in the current directory.
    };
    ```
 
-6. Create `AGENTS.md` manifest for the project.
+6. Create `.symbiont/local-policy.toml` with default deny rules:
+   ```toml
+   [deny]
+   paths = [".env", ".ssh/", ".aws/", ".gnupg/", "credentials"]
+   commands = ["rm -rf", "git push --force", "mkfs", "dd if="]
+   branches = ["main", "master", "production"]
+   ```
 
-7. Report what was created and suggest next steps.
+7. Create `AGENTS.md` manifest for the project.
+
+8. Report what was created and suggest next steps.
