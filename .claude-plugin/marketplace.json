@@ -11,8 +11,8 @@
   "plugins": [
     {
       "name": "symbi",
-      "source": ".",
-      "version": "0.2.0",
+      "source": "./",
+      "version": "0.3.0",
       "description": "Zero-trust AI agent governance — ORGA runtime, Cedar policies, SchemaPin verification, and cryptographic audit trails for Claude Code."
     }
   ]
